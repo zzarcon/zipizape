@@ -5,3 +5,4 @@
 ## TODO 
 
 * Inline Worker
+* add zip.js credits to Readme

@@ -1,6 +1,8 @@
 // import * as zip from './ziplib/zip';
 // TODO: import dynamically 
-const {zip} = require('./ziplib/zip');
+// const {zip} = require('./ziplib/zip');
+// import * as zip from './ziplib/zip';
+import {zip} from './ziplib/zip';
 
 zip.useWebWorkers = false;
 

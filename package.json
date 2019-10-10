@@ -1,10 +1,10 @@
 {
   "name": "zipzap",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/es5/index.js",
   "jsnext:main": "dist/es2015/index.js",
   "module": "dist/es2015/index.js",
-  "types": "dist/es5/index.d.ts",  
+  "types": "dist/es5/index.d.ts",
   "devDependencies": {
     "ts-react-toolbox": "^0.2.10"
   },
