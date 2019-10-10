@@ -1,0 +1,31 @@
+{
+  "name": "zipzap",
+  "version": "0.0.1",
+  "main": "dist/es5/index.js",
+  "jsnext:main": "dist/es2015/index.js",
+  "module": "dist/es2015/index.js",
+  "types": "dist/es5/index.d.ts",  
+  "devDependencies": {
+    "ts-react-toolbox": "^0.2.10"
+  },
+  "engines": {
+    "node": ">=8.5.0"
+  },
+  "scripts": {
+    "bootstrap": "ts-react-toolbox init",
+    "dev": "ts-react-toolbox dev",
+    "test": "ts-react-toolbox test",
+    "test:ci": "ts-react-toolbox test --runInBand --coverage",
+    "build": "ts-react-toolbox build",
+    "release": "ts-react-toolbox release",
+    "static": "ts-react-toolbox publish"
+  },
+  "files": [
+    "dist"
+  ],
+  "description": "ES6 wrapper for zip.js",
+  "repository": "git@github.com:zzarcon/zipzap.git",
+  "author": "Hector Leon Zarco Garcia <hezarco@gmail.com>",
+  "license": "MIT",
+  "keywords": []
+}
