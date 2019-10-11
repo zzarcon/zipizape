@@ -1,1 +1,1 @@
-export {Zipzap} from './zipzap';
+export {ZipiZape} from './zipizape';

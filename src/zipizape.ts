@@ -8,7 +8,7 @@ zip.useWebWorkers = false;
 
 console.log(zip)
 
-export class Zipzap {
+export class ZipiZape {
   async read(file: File) {
     return new Promise((resolve, reject) => {
       const onEnd = (entries: any) => {

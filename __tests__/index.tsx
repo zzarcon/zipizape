@@ -1,4 +1,4 @@
-describe('Zipzap', () => {
+describe('zipizape', () => {
   const setup = () => {
     return {
       
