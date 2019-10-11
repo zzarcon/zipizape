@@ -6,3 +6,4 @@
 
 * Inline Worker
 * add zip.js credits to Readme
+* Add Zipi y Zape logo

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Component, ChangeEvent} from 'react';
+import {Component} from 'react';
 import {GHCorner} from 'react-gh-corner';
 import {AppWrapper, GlobalStyles} from './styled';
 import {ZipiZape} from '../src';
@@ -17,8 +17,9 @@ export default class App extends Component <{}, AppState> {
     
   }
 
-  onChange = async (event: ChangeEvent<HTMLInputElement>) => {
-    const firstFile = event.target.files[0];
+  // ChangeEvent<HTMLInputElement>
+  onChange = async (event: any) => {
+    const firstFile: any = event!.target.files[0];
     const contents = await zipizape.read(firstFile)
 
     console.log({contents})
