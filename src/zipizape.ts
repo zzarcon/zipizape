@@ -1,34 +1,49 @@
-// import * as zip from './ziplib/zip';
-// TODO: import dynamically 
-// const {zip} = require('./ziplib/zip');
-// import * as zip from './ziplib/zip';
-import {zip} from './ziplib/zip';
+import * as Jszip from 'jszip';
+import {getType} from 'mime';
 
-zip.useWebWorkers = false;
+export interface EntryContent {
+  blob: Blob;
+  type: string;
+}
 
-console.log(zip)
+export class Entry {
+  zip: Jszip;
+  zipEntry: string;
+
+  constructor(zip: Jszip, zipEntry: string) {
+    this.zip = zip;
+    this.zipEntry = zipEntry;
+  }
+
+  async getContent(): Promise<EntryContent | undefined> {
+    const isFolder = this.zip.files[this.zipEntry].dir;
+    if (isFolder) {
+      this.zip.folder(this.zipEntry);
+      // TODO: return folder? some folders seems to be fake?
+      return;
+    }
+    const file = this.zip.file(this.zipEntry);
+    const type = getType(this.zipEntry);
+    const blob = await file.async('blob');
+
+    return {blob, type};
+  }
+}
 
 export class ZipiZape {
-  async read(file: File) {
-    return new Promise((resolve, reject) => {
-      const onEnd = (entries: any) => {
-        console.log({entries})
+  async readFile(file: File): Promise<Entry[]> {
+    return new Promise(async resolve => {
+      const zip = await Jszip.loadAsync(file);
+      const entries: Entry[] = [];
 
-        entries.forEach((entry: any) => {
-          console.log({entry})
-          // entry.getData(writer, function(blob) {
-					// 	console.log({blob});
-					// 	var blobURL = creationMethod == "Blob" ? URL.createObjectURL(blob) : zipFileEntry.toURL();
-					// 	onend(blobURL);
-					// }, onprogress);
-        })
+      zip.forEach(zipEntry => {
+        console.log({zipEntry})
+        const entry = new Entry(zip, zipEntry);
+        
+        entries.push(entry);
+      })
 
-        resolve(entries)
-      };
-
-      zip.createReader(new zip.BlobReader(file), (zipReader: any) => {
-        zipReader.getEntries(onEnd);
-      }, reject);
-    })
+      resolve(entries);
+    })  
   }
 }

@@ -19,10 +19,14 @@ export default class App extends Component <{}, AppState> {
 
   // ChangeEvent<HTMLInputElement>
   onChange = async (event: any) => {
-    const firstFile: any = event!.target.files[0];
-    const contents = await zipizape.read(firstFile)
+    const firstFile = event.target.files[0];
+    const entries = await zipizape.readFile(firstFile)
 
-    console.log({contents})
+    for (let entry of entries) {
+      const content = await entry.getContent();
+
+      console.log(content)
+    }
   }
 
   render() {

@@ -6,6 +6,8 @@
   "module": "dist/es2015/index.js",
   "types": "dist/es5/index.d.ts",
   "devDependencies": {
+    "@types/jszip": "^3.1.6",
+    "@types/mime": "^2.0.1",
     "ts-react-toolbox": "^0.2.10"
   },
   "engines": {
@@ -27,5 +29,9 @@
   "repository": "git@github.com:zzarcon/zipizape.git",
   "author": "Hector Leon Zarco Garcia <hezarco@gmail.com>",
   "license": "MIT",
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "jszip": "^3.2.2",
+    "mime": "^2.4.4"
+  }
 }
