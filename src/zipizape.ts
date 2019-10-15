@@ -1,20 +1,32 @@
 import * as Jszip from 'jszip';
 import {getType} from 'mime';
 
+export type FileType = 'image' | 'video' | 'unknown';
+
 export interface EntryContent {
   blob: Blob;
-  type: string;
+  type: FileType;
+  mimeType: string;
+  name: string;
+  getPreview: () => string;
+}
+
+const getTypeFromMimeType = (mimeType: string): FileType => {
+  return mimeType.startsWith('video/') ? 'video' : (
+    mimeType.startsWith('image/') ? 'image' : 'unknown'
+  );
 }
 
 export class Entry {
-  zip: Jszip;
-  zipEntry: string;
+  private zip: Jszip;
+  private zipEntry: string;
 
   constructor(zip: Jszip, zipEntry: string) {
     this.zip = zip;
     this.zipEntry = zipEntry;
   }
 
+  // TODO: should we flat all the files?
   async getContent(): Promise<EntryContent | undefined> {
     const isFolder = this.zip.files[this.zipEntry].dir;
     if (isFolder) {
@@ -23,10 +35,22 @@ export class Entry {
       return;
     }
     const file = this.zip.file(this.zipEntry);
-    const type = getType(this.zipEntry);
+    const mimeType = getType(this.zipEntry) || '';
     const blob = await file.async('blob');
 
-    return {blob, type};
+    // TODO: extract into a class
+    return {
+      blob,
+      mimeType,
+      type: getTypeFromMimeType(mimeType),
+      name: this.name,
+      getPreview: () => URL.createObjectURL(blob)
+      // TODO: add isImage, isVideo
+    };
+  }
+
+  get name(): string {
+    return this.zipEntry;
   }
 }
 
@@ -37,7 +61,6 @@ export class ZipiZape {
       const entries: Entry[] = [];
 
       zip.forEach(zipEntry => {
-        console.log({zipEntry})
         const entry = new Entry(zip, zipEntry);
         
         entries.push(entry);
