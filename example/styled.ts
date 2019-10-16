@@ -16,14 +16,41 @@ export const AppWrapper = styled.div`
 `;
 
 export const EntryWrapper = styled.div`
-  height: 150px;
-  overflow: hidden;
   padding: 10px;
-  border-bottom: 1px;
-  display: flex;
+  border-bottom: 1px solid;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 
   video {
     width: 400px;
     outline: none;
   }
+`;
+
+export const ViewerWrapper = styled.div`
+  display: flex;
+  margin-top: 10px;
+  height: calc(100vh - 70px);
+  overflow: hidden;
+  border: 1px solid;
+  border-radius: 3px;
+`;
+
+export const SelectedEntryWrapper = styled.div`
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  video {
+    height: 100%;
+  }
+`;
+
+export const EntriesWrapper = styled.div`
+  border-right: 1px solid;
 `;

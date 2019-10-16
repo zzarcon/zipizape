@@ -1,14 +1,16 @@
 import * as React from 'react';
 import {Component} from 'react';
 import {GHCorner} from 'react-gh-corner';
-import {AppWrapper, GlobalStyles, EntryWrapper} from './styled';
-import {ZipiZape} from '../src';
-import { EntryContent } from '../src/zipizape';
+import {StylishInput} from 'react-stylish-input';
+import AttachmentIcon from '@atlaskit/icon/glyph/attachment';
+import Button from '@atlaskit/button';
+import {EntriesWrapper, SelectedEntryWrapper, ViewerWrapper, AppWrapper, GlobalStyles, EntryWrapper} from './styled';
+import {ZipiZape, EntryContent} from '../src';
 
 const zipizape = new ZipiZape();
-
 export interface AppState {
   entries: EntryContent[];
+  selectedEntry?: EntryContent;
 }
 
 const repoUrl = 'https://github.com/';
@@ -26,7 +28,8 @@ export default class App extends Component <{}, AppState> {
     const entriesPromise = (await Promise.all(contents)).filter(entry => !!entry);
 
     this.setState({
-      entries: entriesPromise
+      entries: entriesPromise,
+      selectedEntry: entriesPromise[0]
     });
   }
 
@@ -37,9 +40,15 @@ export default class App extends Component <{}, AppState> {
         return <img src={src} />
       case 'video': 
         return <video controls src={src} />
-      case 'unknown': 
+      case 'unknown': default: 
         return <div>no preview</div>
     }
+  }
+
+  onEntryClick = (selectedEntry: EntryContent) => () => {
+    this.setState({
+      selectedEntry
+    })
   }
 
   renderEntries = () => {
@@ -47,20 +56,29 @@ export default class App extends Component <{}, AppState> {
     if (!entries.length) {return null}
     
     const entriesContent = entries.map(entry => {
-      const entryPreview = this.renderPreview(entry);
-      
       return (
-        <EntryWrapper>
+        <EntryWrapper key={entry.name} onClick={this.onEntryClick(entry)}>
           {entry.name}
-          {entryPreview}
         </EntryWrapper>
       )
     });
 
     return (
-      <div>
+      <EntriesWrapper>
         {entriesContent}
-      </div>
+      </EntriesWrapper>
+    )
+  }
+
+  renderSelectedEntry = () => {
+    const {selectedEntry} = this.state;
+    if (!selectedEntry) return null;
+    const entryPreview = this.renderPreview(selectedEntry);
+
+    return (
+      <SelectedEntryWrapper>
+        {entryPreview}
+      </SelectedEntryWrapper>
     )
   }
 
@@ -69,8 +87,15 @@ export default class App extends Component <{}, AppState> {
       <AppWrapper>
         <GlobalStyles />
         <GHCorner openInNewTab href={repoUrl} />
-        <input type="file" onChange={this.onChange}/>
-        {this.renderEntries()}
+        <StylishInput onChange={this.onChange}>
+          <Button appearance="primary" iconBefore={<AttachmentIcon label="clip" />} >
+            Pick file
+          </Button>
+        </StylishInput>
+        <ViewerWrapper>
+          {this.renderEntries()}
+          {this.renderSelectedEntry()}
+        </ViewerWrapper>
       </AppWrapper>
     )
   }

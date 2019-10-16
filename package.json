@@ -6,8 +6,11 @@
   "module": "dist/es2015/index.js",
   "types": "dist/es5/index.d.ts",
   "devDependencies": {
+    "@atlaskit/button": "^13.3.3",
+    "@atlaskit/icon": "^19.0.8",
     "@types/jszip": "^3.1.6",
     "@types/mime": "^2.0.1",
+    "react-stylish-input": "^0.0.2",
     "ts-react-toolbox": "^0.2.10"
   },
   "engines": {

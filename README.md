@@ -47,3 +47,5 @@ EntryContent = {
 
 * add jszip credits to Readme
 * Add Zipi y Zape logo 
+* tests
+* style example => Zip Viewer
