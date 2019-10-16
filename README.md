@@ -6,6 +6,9 @@
 # zipizape
 > Extract zip contents in the browser with ease
 
+### Demo
+
+[https://zzarcon.github.io/zipizape](https://zzarcon.github.io/zipizape)
 
 ### Install
 
