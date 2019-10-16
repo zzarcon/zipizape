@@ -3,7 +3,7 @@
   <br><br>
 </div>
 
-# zipizape
+# zipizape [![Build Status](https://travis-ci.org/zzarcon/zipizape.svg?branch=master)](https://travis-ci.org/zzarcon/zipizape)
 > Extract zip contents in the browser with ease
 
 ### Demo
