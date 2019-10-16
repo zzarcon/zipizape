@@ -1,3 +1,8 @@
+<div align="center">
+  <img src="logo.jpg" alt="Logo" width="250">
+  <br><br>
+</div>
+
 # zipizape
 > Extract zip contents in the browser with ease
 
