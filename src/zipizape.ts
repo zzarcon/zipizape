@@ -7,8 +7,11 @@ export class ZipiZape {
     const entries: ZipEntry[] = [];
 
     zip.forEach(zipEntry => {
-      const entry = new ZipEntry(zip, zipEntry);
-      entries.push(entry);
+      const isMACOSX = zipEntry.startsWith('__MACOSX');
+      if (!isMACOSX) {
+        const entry = new ZipEntry(zip as any, zipEntry);
+        entries.push(entry);
+      }
     })
 
     return entries

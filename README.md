@@ -32,13 +32,13 @@ for (let entry of entries) {
 
 **ZipiZape**
 
-```
+```typescript
 readFile(file: File): Promise<Entry[]>
 ```
 
 **Entry**
 
-```
+```typescript
 getContent(): Promise<EntryContent | undefined>
 
 EntryContent = {
@@ -51,6 +51,4 @@ EntryContent = {
 ## TODO 
 
 * add jszip credits to Readme
-* Add Zipi y Zape logo 
 * tests
-* style example => Zip Viewer
