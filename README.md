@@ -51,7 +51,6 @@ EntryContent = {
 ```
 
 
-## TODO 
+### Credits
 
-* add jszip credits to Readme
-* tests
+Zipizape uses [jszip](https://github.com/Stuk/jszip) as the zip reader engine, much love to them for building such a great project 💖

@@ -45,12 +45,23 @@ export const SelectedEntryWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 
   video {
     height: 100%;
+    width: 100%;
+    outline: none;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
   }
 `;
 
 export const EntriesWrapper = styled.div`
   border-right: 1px solid;
+  width: 300px;
+  overflow: hidden;
 `;

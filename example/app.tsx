@@ -34,7 +34,7 @@ export default class App extends Component <{}, AppState> {
   }
 
   renderPreview = (entry: EntryContent) => {
-    const src = entry.getPreview();
+    const {src} = entry.getPreview();
     switch (entry.type) {
       case 'image': 
         return <img src={src} />
