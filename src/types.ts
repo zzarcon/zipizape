@@ -10,6 +10,6 @@ export interface EntryContent {
   type: FileType;
   mimeType: string;
   name: string;
-  getPreview: () => FilePreview;
+  getPreview: () => FilePreview | undefined;
   blob?: Blob;
 }

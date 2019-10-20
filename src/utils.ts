@@ -8,7 +8,9 @@ export const getTypeFromMimeType = (mimeType: string): FileType => {
   return 'unknown';
 }
 
-export  const getPreviewFromBlob = (blob?: Blob) => (): FilePreview => {
+export  const getPreviewFromBlob = (blob?: Blob) => (): FilePreview | undefined => {
+  if (!blob) return;
+
   const src = URL.createObjectURL(blob);
   const revoke = () => URL.revokeObjectURL(src);
 
