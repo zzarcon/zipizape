@@ -1,6 +1,6 @@
 {
   "name": "zipizape",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "dist/es5/index.js",
   "jsnext:main": "dist/es2015/index.js",
   "module": "dist/es2015/index.js",
