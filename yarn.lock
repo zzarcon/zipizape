@@ -9597,10 +9597,10 @@ tryer@^1.0.0:
   resolved "https://registry.yarnpkg.com/tryer/-/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
   integrity sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==
 
-ts-react-toolbox@^0.2.10:
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/ts-react-toolbox/-/ts-react-toolbox-0.2.10.tgz#7d64eb3f725a5e78055c19cb4987b3a2932438c0"
-  integrity sha512-GuieKL0X6IyEqB7k3jRmhsGz/BP8RmgPns8xNcEwF5y+EG65qLRD/O5ecdrcVqRjZf0CY1tLG7YKXxXHR+VA4w==
+ts-react-toolbox@^0.2.11:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/ts-react-toolbox/-/ts-react-toolbox-0.2.11.tgz#ee868721223b96553ca2a906df1f6391af216d59"
+  integrity sha512-bSgUgPx80QgxJeRuFqAqraC2LduoHhPcxWGszzXVrlTujbhcbVa2usZEp2xdl7bMYzMJcjV/CZPc6gReGwes5A==
   dependencies:
     "@types/enzyme" "^3.10.3"
     "@types/jest" "^24.0.15"
