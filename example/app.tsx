@@ -38,6 +38,7 @@ export default class App extends Component <{}, AppState> {
     if (!preview) return null;
 
     const {src} = preview;
+    console.log(entry.type)
     switch (entry.type) {
       case 'image': 
         return <img src={src} />

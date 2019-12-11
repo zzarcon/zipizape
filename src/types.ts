@@ -1,4 +1,4 @@
-export type FileType = 'image' | 'video' | 'audio' | 'unknown';
+export type FileType = 'image' | 'video' | 'audio' | 'doc' | 'unknown';
 
 export interface FilePreview {
   src: string;
