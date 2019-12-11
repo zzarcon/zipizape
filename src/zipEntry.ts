@@ -42,4 +42,12 @@ export class ZipEntry {
   get isFolder(): boolean {
     return this.zip.files[this.zipEntry].dir;
   }
+
+  get mimeType(): string {
+    return getType(this.zipEntry) || '';
+  }
+
+  get type(): string {
+    return getTypeFromMimeType(this.mimeType);
+  }
 }
