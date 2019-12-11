@@ -26,7 +26,7 @@ export default class App extends Component <{}, AppState> {
     const entries = await zipizape.readFile(firstFile)
     const contents = entries.map(entry => entry.getContent());
     const entriesPromise = (await Promise.all(contents)).filter(entry => !!entry);
-
+    entries.forEach(entry => console.log(entry.isFolder))
     this.setState({
       entries: entriesPromise,
       selectedEntry: entriesPromise[0]

@@ -38,4 +38,8 @@ export class ZipEntry {
   get name(): string {
     return this.zipEntry;
   }
+
+  get isFolder(): boolean {
+    return this.zip.files[this.zipEntry].dir;
+  }
 }
